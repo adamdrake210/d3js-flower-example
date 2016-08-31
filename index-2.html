@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Favourite Flowers!</title>
+    <meta charset="utf-8">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+  <style>
+  body {
+    font-size: 16px;
+    line-height: 1.5em;
+    color: #333333;
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
+
+  }
+  div#content {
+    margin: auto;
+    width: 800px;
+  }
+  div#content > h1 {
+    margin: 20px;
+    text-align: center;
+  }
+  div#content > div.flower > * {
+    margin: 0;
+  }
+  div#content > div.flower {
+    display: inline-block;
+    padding: 15px 20px;
+    margin: 10px;
+    vertical-align: top;
+  }
+  div#content div.flower > img {
+    width: 200px;
+  }
+
+
+  </style>
+
+  </head>
+  <body>
+    <div id="content">
+      <h1>My Favourite Flowers!</h1>
+      <div class="flower">
+        <h2>Hydrangia</h2>
+        <p><i>Hydrangea</i></p>
+        <img src="img/hydrangia.jpg" alt="">
+        <p>Sun</p>
+      </div>
+      <div class="flower">
+        <h2>Hydrangia</h2>
+        <p><i>Hydrangea</i></p>
+        <img src="img/hydrangia.jpg" alt="">
+        <p>Sun</p>
+      </div>
+      <div class="flower">
+        <h2>Hydrangia</h2>
+        <p><i>Hydrangea</i></p>
+        <img src="img/hydrangia.jpg" alt="">
+        <p>Sun</p>
+      </div>
+      <div class="flower">
+        <h2>Hydrangia</h2>
+        <p><i>Hydrangea</i></p>
+        <img src="img/hydrangia.jpg" alt="">
+        <p>Sun</p>
+      </div>
+      <div class="flower">
+        <h2>Hydrangia</h2>
+        <p><i>Hydrangea</i></p>
+        <img src="img/hydrangia.jpg" alt="">
+        <p>Sun</p>
+      </div>
+    </div>
+    <script>
+
+
+    var flowers = [
+  {
+    "name": "Hydrangia",
+    "latin": "Hydrangea",
+    "light": "Sun",
+    "ease": 3
+  },
+  {
+    "name": "Chrysanthemum",
+    "latin": "Chrysanthemum",
+    "light": "Part Sun",
+    "ease": 1
+  },
+  {
+    "name": "Peony",
+    "latin": "Paeonia",
+    "light": "Part Sun",
+    "ease": -1
+  },
+  {
+    "name": "Orchid",
+    "latin": "Paeonia",
+    "light": "Shade",
+    "ease": -5
+  },
+  {
+    "name": "Fern",
+    "latin": "Dryopteris",
+    "light": "Shade",
+    "ease": 5
+  }
+];
+
+  // Part 1
+  // Creating Elements
+  var div = d3.select("div#content")
+            .selectAll("div")
+            .data(flowers)
+            .enter().append("div").attr("class", "flower");
+
+
+    </script>
+  </body>
+</html>
