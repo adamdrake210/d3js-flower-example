@@ -115,6 +115,10 @@
             .data(flowers)
             .enter().append("div").attr("class", "flower");
 
+      div.append("h2").text(function(data, index) {
+        console.log(data);
+      });
+
 
     </script>
   </body>
