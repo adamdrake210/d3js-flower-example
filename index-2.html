@@ -41,36 +41,7 @@
   <body>
     <div id="content">
       <h1>My Favourite Flowers!</h1>
-      <div class="flower">
-        <h2>Hydrangia</h2>
-        <p><i>Hydrangea</i></p>
-        <img src="img/hydrangia.jpg" alt="">
-        <p>Sun</p>
-      </div>
-      <div class="flower">
-        <h2>Hydrangia</h2>
-        <p><i>Hydrangea</i></p>
-        <img src="img/hydrangia.jpg" alt="">
-        <p>Sun</p>
-      </div>
-      <div class="flower">
-        <h2>Hydrangia</h2>
-        <p><i>Hydrangea</i></p>
-        <img src="img/hydrangia.jpg" alt="">
-        <p>Sun</p>
-      </div>
-      <div class="flower">
-        <h2>Hydrangia</h2>
-        <p><i>Hydrangea</i></p>
-        <img src="img/hydrangia.jpg" alt="">
-        <p>Sun</p>
-      </div>
-      <div class="flower">
-        <h2>Hydrangia</h2>
-        <p><i>Hydrangea</i></p>
-        <img src="img/hydrangia.jpg" alt="">
-        <p>Sun</p>
-      </div>
+      
     </div>
     <script>
 
@@ -108,6 +79,10 @@
   }
 ];
 
+  var color = d3.scaleLinear()
+                .domain([-5, 0, 5])
+                .range(["red", "white", "green"]);
+
   // Part 1
   // Creating Elements
   var div = d3.select("div#content")
@@ -115,9 +90,51 @@
             .data(flowers)
             .enter().append("div").attr("class", "flower");
 
-      div.append("h2").text(function(data, index) {
-        console.log(data);
+  div.append("h2").text(function(data, index) {
+        return data.name;
       });
+
+  div.append("p").append("i").text(function(d) {
+    return d.latin;
+  });
+
+  div.append("img").attr("src", function(d) {
+    return "img/" + d.name.toLowerCase()+".jpg";
+  });
+
+  div.append("p").text(function(d) {
+    return d.light;
+  });
+
+  div.style("background-color", function(d) { return color(d.ease); });
+
+
+  var legend_div = d3.select("div#content")
+                      .append("div")
+                      .attr("id", "legend");
+
+      legend_div.append("h2").text("Ease of Care Legend");
+
+
+
+  var span = d3.select("div#legend")
+                .selectAll("span")
+                .data(d3.range(-5, 6))
+                .enter().append("span");
+
+  span.style("background-color", function(d) {return color(d); })
+    .style("width", "30px")
+    .style("height", "30px")
+    .style("display", "inline-block")
+    .style("text-align", "center")
+    .style("vertical-align", "top")
+    .text(function(d) {
+      if(d==-5 || d==0 || d==5) {
+        return d;
+      }
+    });
+
+
 
 
     </script>
